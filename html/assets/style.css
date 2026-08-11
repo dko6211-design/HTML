@@ -1,0 +1,27 @@
+:root { color-scheme: light; --ink:#172033; --muted:#667085; --line:#e6e9ef; --accent:#4263eb; --soft:#f5f7ff; }
+* { box-sizing: border-box; }
+body { margin:0; font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color:var(--ink); background:#f8f9fc; }
+.wrap { width:min(1040px, calc(100% - 40px)); margin:0 auto; }
+.hero { padding:72px 0 42px; background:linear-gradient(135deg,#eef2ff,#ffffff 58%); border-bottom:1px solid var(--line); }
+.eyebrow { color:var(--accent); font-weight:700; letter-spacing:.08em; font-size:.78rem; }
+h1 { margin:12px 0 10px; font-size:clamp(2rem,5vw,3.4rem); letter-spacing:-.06em; }
+.intro { margin:0; color:var(--muted); font-size:1.05rem; }
+.toolbar { display:flex; gap:12px; flex-wrap:wrap; margin-top:28px; }
+input, select { border:1px solid var(--line); border-radius:12px; background:#fff; padding:14px 16px; font:inherit; color:var(--ink); }
+input { flex:1 1 300px; min-width:0; } select { flex:0 1 180px; }
+.main-content { padding:34px 0 72px; }
+.summary { color:var(--muted); margin-bottom:18px; font-size:.92rem; }
+.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px; }
+.term { display:block; background:#fff; border:1px solid var(--line); border-radius:16px; padding:22px; text-decoration:none; color:var(--ink); box-shadow:0 4px 16px rgba(23,32,51,.04); transition:transform .18s, box-shadow .18s; }
+.term:hover { transform:translateY(-3px); box-shadow:0 10px 24px rgba(23,32,51,.10); }
+.term h2 { margin:0 0 18px; font-size:1.22rem; letter-spacing:-.03em; }
+.tag { display:inline-block; padding:5px 9px; border-radius:999px; color:var(--accent); background:var(--soft); font-size:.78rem; font-weight:700; }
+.read-more { float:right; color:var(--muted); font-size:.86rem; margin-top:5px; }
+.empty { grid-column:1/-1; padding:48px 20px; text-align:center; color:var(--muted); background:#fff; border:1px dashed #cdd3df; border-radius:16px; }
+footer { padding:24px 0; color:var(--muted); font-size:.85rem; border-top:1px solid var(--line); }
+code { color:var(--accent); }
+.detail { padding:64px 0 80px; }
+.back { color:var(--accent); text-decoration:none; font-size:.9rem; }
+.detail h1 { margin-top:28px; }
+.detail-card { max-width:720px; margin-top:28px; padding:28px; background:#fff; border:1px solid var(--line); border-radius:16px; line-height:1.8; }
+@media (max-width:560px) { .wrap { width:min(100% - 28px, 1040px); } .hero { padding-top:48px; } }

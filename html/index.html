@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>웹 용어 정리집</title>
+  <link rel="stylesheet" href="./assets/style.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <div class="eyebrow">PERSONAL GLOSSARY</div>
+      <h1>웹 용어 정리집</h1>
+      <p class="intro">필요한 용어를 한곳에 모아 쉽고 빠르게 찾아보세요.</p>
+      <div class="toolbar">
+        <input id="search" type="search" placeholder="용어 검색" aria-label="용어 검색" />
+        <select id="category" aria-label="분류 선택">
+          <option value="all">모든 분류</option>
+          <option value="기본">기본</option>
+          <option value="웹">웹</option>
+          <option value="개발">개발</option>
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap main-content">
+    <div id="summary" class="summary"></div>
+    <section id="terms" class="grid" aria-live="polite"></section>
+  </main>
+
+  <footer><div class="wrap">용어를 추가하려면 <code>html/terms/용어명/index.html</code>을 만들고 목록에 링크를 추가하세요.</div></footer>
+
+  <script>
+    // 용어 설명은 각 용어 폴더의 index.html에 저장합니다.
+    const terms = [
+      { name: 'HTML', category: '웹', url: './terms/html.html' },
+      { name: 'CSS', category: '웹', url: './terms/css.html' },
+      { name: 'JavaScript', category: '개발', url: './terms/javascript.html' },
+      { name: '프론트엔드 (Frontend)', category: '웹', url: './terms/frontend.html' },
+      { name: '백엔드 (Backend)', category: '개발', url: './terms/backend.html' },
+      { name: '리포지터리 (Repository)', category: '개발', url: './terms/repository.html' },
+      { name: 'UI', category: '기본', url: './terms/ui.html' },
+      { name: 'UX', category: '기본', url: './terms/ux.html' },
+      { name: 'API', category: '개발', url: './terms/api.html' }
+    ];
+
+    const list = document.querySelector('#terms');
+    const summary = document.querySelector('#summary');
+    const search = document.querySelector('#search');
+    const category = document.querySelector('#category');
+
+    function render() {
+      const keyword = search.value.trim().toLowerCase();
+      const selected = category.value;
+      const filtered = terms.filter(term =>
+        (selected === 'all' || term.category === selected) &&
+        (!keyword || term.name.toLowerCase().includes(keyword))
+      );
+      summary.textContent = `총 ${filtered.length}개의 용어`;
+      list.innerHTML = filtered.length ? filtered.map(term => `
+        <a class="term" href="${term.url}">
+          <h2>${term.name}</h2>
+          <span class="tag">${term.category}</span>
+          <span class="read-more">자세히 보기 →</span>
+        </a>`).join('') : '<div class="empty">검색 결과가 없습니다.</div>';
+    }
+
+    search.addEventListener('input', render);
+    category.addEventListener('change', render);
+    render();
+  </script>
+</body>
+</html>
