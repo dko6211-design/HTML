@@ -24,4 +24,12 @@ code { color:var(--accent); }
 .back { color:var(--accent); text-decoration:none; font-size:.9rem; }
 .detail h1 { margin-top:28px; }
 .detail-card { max-width:720px; margin-top:28px; padding:28px; background:#fff; border:1px solid var(--line); border-radius:16px; line-height:1.8; }
+.related-terms { max-width:720px; margin-top:36px; }
+.related-terms h2 { margin:0 0 16px; font-size:1.35rem; letter-spacing:-.04em; }
+.related-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; }
+.related-term { display:block; padding:18px; color:var(--ink); background:#fff; border:1px solid var(--line); border-radius:14px; text-decoration:none; }
+.related-term:hover { border-color:var(--accent); }
+.related-term h3 { margin:0 0 8px; font-size:1rem; }
+.related-term p { margin:0 0 12px; color:#475467; font-size:.9rem; line-height:1.55; }
+.related-term span { color:var(--accent); font-size:.82rem; font-weight:700; }
 @media (max-width:560px) { .wrap { width:min(100% - 28px, 1040px); } .hero { padding-top:48px; } }
