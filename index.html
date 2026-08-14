@@ -46,6 +46,14 @@
       { name: 'UX', category: '기본', url: './terms/ux.html' },
       { name: 'API', category: '개발', url: './terms/api.html' }
     ];
+    const relatedTerms = [
+      { name: 'Commit', category: 'Git', url: './terms/commit.html' },
+      { name: 'Push', category: 'Git', url: './terms/push.html' },
+      { name: 'Fetch', category: 'Git', url: './terms/fetch.html' },
+      { name: 'Pull', category: 'Git', url: './terms/pull.html' },
+      { name: 'Pull Request', category: 'Git', url: './terms/pull-request.html' },
+      { name: 'Merge', category: 'Git', url: './terms/merge.html' }
+    ];
 
     const list = document.querySelector('#terms');
     const summary = document.querySelector('#summary');
@@ -55,7 +63,8 @@
     function render() {
       const keyword = search.value.trim().toLowerCase();
       const selected = category.value;
-      const filtered = terms.filter(term =>
+      const searchableTerms = keyword ? [...terms, ...relatedTerms] : terms;
+      const filtered = searchableTerms.filter(term =>
         (selected === 'all' || term.category === selected) &&
         (!keyword || term.name.toLowerCase().includes(keyword))
       );
